@@ -10,12 +10,13 @@ namespace EisenhowerCore {
         public DateTime Deadline { get; set; }
         public bool IsDone { get; set;  }
 
-        public TodoItem(string title, DateTime deadline)
-        {
-            this.Title = title;
-            this.Deadline = deadline;
-            this.IsDone = false;
-        }
+        //public TodoItem(string title, DateTime deadline)
+        //{
+        //    this.Title = title;
+        //    this.Deadline = deadline;
+        //    this.IsDone = false;
+        //}
+
 
         string GetTitle()
         {
