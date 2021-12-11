@@ -16,9 +16,12 @@ namespace EisenhowerCore
             //TodoQuart.AddItem("haha", V);
             //TodoQuart.GetItem(0).Mark();
             todoMatrix.AddItem("hihi", V);
-            string y = TodoQuart.ToString();
+            todoMatrix.AddItem("hihi", V);
+            todoMatrix.AddItem("hihi", V);
+            todoMatrix.AddItem("hihi", V);
+            //string y = TodoQuart.ToString();
             string z = todoMatrix.ToString();
-            Console.Write(y);
+            //console.write(y);
             Console.Write(z);
 
 

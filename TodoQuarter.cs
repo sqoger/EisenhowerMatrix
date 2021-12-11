@@ -38,7 +38,7 @@ namespace EisenhowerCore {
             return TodoItems[index];
         }
 
-        private List<TodoItem> GetItems()
+        public List<TodoItem> GetItems()
         {
             return TodoItems;
         }

@@ -1,42 +1,35 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 
 namespace EisenhowerCore
 {
+
     public class TodoMatrix
     {
+        public enum QuarterType
+        {
+            ImportantUrgent, ImportantNotUrgent, NotImportantUrgent, NotImportantNotUrgent
+        }
+
+        public Dictionary<QuarterType, TodoQuarter> TodoQuarters = new Dictionary<QuarterType, TodoQuarter>();
+
         public TodoMatrix()
         {
-            ImportantUrgent = new TodoQuarter();
-            ImportantNotUrgent = new TodoQuarter();
-            NotImportantUrgent = new TodoQuarter();
-            NotImportantNotUrgent = new TodoQuarter();
+            TodoQuarters[QuarterType.ImportantUrgent] = new TodoQuarter();
+            TodoQuarters[QuarterType.ImportantNotUrgent] = new TodoQuarter();
+            TodoQuarters[QuarterType.NotImportantUrgent] = new TodoQuarter();
+            TodoQuarters[QuarterType.NotImportantNotUrgent] = new TodoQuarter();
         }
-        public Dictionary<string, TodoQuarter> TodoQuarters { get; set; } = new Dictionary<string, TodoQuarter>
-        {
-              { "IU", ImportantUrgent },
-              { "IN", ImportantNotUrgent },
-              { "NU", NotImportantUrgent },
-              { "NN", NotImportantNotUrgent }
-        };
-        public static TodoQuarter ImportantUrgent { get; set; }
-        public static TodoQuarter ImportantNotUrgent { get; set; }
-        public static TodoQuarter NotImportantUrgent { get; set; }
-        public static TodoQuarter NotImportantNotUrgent { get; set; }
 
-        private Dictionary<string, TodoQuarter> GetQuarters()
+        public Dictionary<QuarterType, TodoQuarter> GetQuarters()
         {
             return TodoQuarters;
         }
 
-        public TodoQuarter GetQuarter(String status)
+        public TodoQuarter GetQuarter(QuarterType status)
         {
-            if (TodoQuarters.ContainsKey(status))
-            {
-                TodoQuarter tdqrtr = TodoQuarters[status];
-                return tdqrtr;
-            }
-            return null;
+            return TodoQuarters[status];
         }
 
         public void AddItem(String title, DateTime deadline, bool isImportant = false)
@@ -45,57 +38,77 @@ namespace EisenhowerCore
             {
                 if ((deadline - DateTime.Now).TotalDays > 3)
                 {
-                    NotImportantNotUrgent.AddItem(title, deadline);
+                    TodoQuarters[QuarterType.NotImportantNotUrgent].AddItem(title, deadline);
                 }
                 else
                 {
-                    NotImportantUrgent.AddItem(title, deadline);
+                    TodoQuarters[QuarterType.NotImportantUrgent].AddItem(title, deadline);
                 }
             }
             else
             {
                 if ((deadline - DateTime.Now).TotalDays > 3)
                 {
-                    ImportantNotUrgent.AddItem(title, deadline);
+                    TodoQuarters[QuarterType.ImportantNotUrgent].AddItem(title, deadline);
                 }
                 else
                 {
-                    ImportantUrgent.AddItem(title, deadline);
+                    TodoQuarters[QuarterType.ImportantUrgent].AddItem(title, deadline);
                 }
             }
         }
 
-        //* `AddItem(String title, DateTime deadline, bool isImportant)`
-        //  Adds new item to dictionary* todoQuarters* using adequate key.You should use method * AddItem* from * TodoQuarter* class.
-        //  This method should be overloaded so as to accept two parameters only.In that case, isImportant should be `false` by default.
+        public void AddItemsFromFile(string filename)
+        {
+            string[] lines = System.IO.File.ReadAllLines(filename);
+            foreach (string line in lines)
+            {
+                string[] item = line.Split('|');
+                string title = item[0];
+                string[] date = item[1].Split('-');
+                bool isImportant;
+                DateTime deadline = new DateTime(DateTime.Today.Year, Int32.Parse(date[1]), Int32.Parse(date[0]));
+                if (item[2] == " ")
+                {
+                    isImportant = false;
+                }
+                else
+                {
+                    isImportant = true;
+                }
+                this.AddItem(title, deadline, isImportant);
+            }
+        }
 
 
-        //* `ArchiveItems()`
 
-        //  Removes all *TodoItem* objects with a parameter* isDone* set to *true* from list *todoItems* in every element of dictionary *todoQuarters*
 
-        //* `ToString()`
-
-        //  Returns a todoQuarters list (an Eisenhower todoMatrix) formatted to string.
+        public void ArchiveItems()
+        {
+            foreach (TodoQuarter quarter in TodoQuarters.Values)
+            {
+                quarter.GetItems().RemoveAll(item => item.IsDone);
+            }
+        }
 
         public override string ToString()
         {
             string MatrixString = "";
             foreach (var item in TodoQuarters)
             {
-                if (TodoQuarters.ContainsKey("IU"))
+                if (item.Key == QuarterType.ImportantUrgent)
                 {
                     MatrixString += $"Important & Urgent: \n{item.Value.ToString()}";
                 }
-                else if (TodoQuarters.ContainsKey("IN"))
+                else if (item.Key == QuarterType.ImportantNotUrgent)
                 {
                     MatrixString += $"Important & Not Urgent: \n{item.Value.ToString()}";
                 }
-                else if (TodoQuarters.ContainsKey("NU"))
+                else if (item.Key == QuarterType.NotImportantUrgent)
                 {
                     MatrixString += $"Not Important & Urgent: \n{item.Value.ToString()}";
                 }
-                else
+                else if (item.Key == QuarterType.NotImportantNotUrgent)
                 {
                     MatrixString += $"Not Important & Not Urgent: \n{item.Value.ToString()}";
                 }
@@ -103,10 +116,8 @@ namespace EisenhowerCore
             }
             return MatrixString;
 
+
         }
 
-
     }
-
-
 }
