@@ -5,25 +5,24 @@ namespace EisenhowerCore
 {
     public class TodoMatrix
     {
+        public TodoMatrix()
+        {
+            ImportantUrgent = new TodoQuarter();
+            ImportantNotUrgent = new TodoQuarter();
+            NotImportantUrgent = new TodoQuarter();
+            NotImportantNotUrgent = new TodoQuarter();
+        }
         public Dictionary<string, TodoQuarter> TodoQuarters { get; set; } = new Dictionary<string, TodoQuarter>
         {
-              { "IU", IU },
-              { "IN", IN },
-              { "NU", NU },
-              { "NN", NN }
+              { "IU", ImportantUrgent },
+              { "IN", ImportantNotUrgent },
+              { "NU", NotImportantUrgent },
+              { "NN", NotImportantNotUrgent }
         };
-        public static TodoQuarter IU { get; set; }
-        public static TodoQuarter IN { get; set; }
-        public static TodoQuarter NU { get; set; }
-        public static TodoQuarter NN { get; set; }
-
-
-        //possible keys of TODO quarter:
-        //- 'IU' means that todoQuarter contains important todoItems & urgent
-        //- 'IN' means that todoQuarter contains important todoItems & not urgent
-        //- 'NU' means that todoQuarter contains not important todoItems & urgent
-        //- 'NN' means that todoQuarter contains not important & not urgent todoItems
-
+        public static TodoQuarter ImportantUrgent { get; set; }
+        public static TodoQuarter ImportantNotUrgent { get; set; }
+        public static TodoQuarter NotImportantUrgent { get; set; }
+        public static TodoQuarter NotImportantNotUrgent { get; set; }
 
         private Dictionary<string, TodoQuarter> GetQuarters()
         {
@@ -46,22 +45,22 @@ namespace EisenhowerCore
             {
                 if ((deadline - DateTime.Now).TotalDays > 3)
                 {
-                    NN.AddItem(title, deadline);
+                    NotImportantNotUrgent.AddItem(title, deadline);
                 }
                 else
                 {
-                    NU.AddItem(title, deadline);
+                    NotImportantUrgent.AddItem(title, deadline);
                 }
             }
             else
             {
                 if ((deadline - DateTime.Now).TotalDays > 3)
                 {
-                    IN.AddItem(title, deadline);
+                    ImportantNotUrgent.AddItem(title, deadline);
                 }
                 else
                 {
-                    IU.AddItem(title, deadline);
+                    ImportantUrgent.AddItem(title, deadline);
                 }
             }
         }
@@ -79,26 +78,26 @@ namespace EisenhowerCore
 
         //  Returns a todoQuarters list (an Eisenhower todoMatrix) formatted to string.
 
-        public string MatrixToString()
+        public override string ToString()
         {
             string MatrixString = "";
             foreach (var item in TodoQuarters)
             {
                 if (TodoQuarters.ContainsKey("IU"))
                 {
-                    MatrixString = MatrixString + $"Important & Urgent: \n{item.Value.QuartToString()}";
+                    MatrixString += $"Important & Urgent: \n{item.Value.ToString()}";
                 }
-                if (TodoQuarters.ContainsKey("IN"))
+                else if (TodoQuarters.ContainsKey("IN"))
                 {
-                    MatrixString = MatrixString + $"Important & Not Urgent: \n{item.Value.QuartToString()}";
+                    MatrixString += $"Important & Not Urgent: \n{item.Value.ToString()}";
                 }
-                if (TodoQuarters.ContainsKey("NU"))
+                else if (TodoQuarters.ContainsKey("NU"))
                 {
-                    MatrixString = MatrixString + $"Not Important & Urgent: \n{item.Value.QuartToString()}";
+                    MatrixString += $"Not Important & Urgent: \n{item.Value.ToString()}";
                 }
                 else
                 {
-                    MatrixString = MatrixString + $"Not Important & Not Urgent: \n{item.Value.QuartToString()}";
+                    MatrixString += $"Not Important & Not Urgent: \n{item.Value.ToString()}";
                 }
 
             }

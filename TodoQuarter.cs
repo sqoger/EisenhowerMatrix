@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace EisenhowerCore { 
 
@@ -9,10 +8,6 @@ namespace EisenhowerCore {
 
         public List<TodoItem> TodoItems { get; set; } = new List<TodoItem>();
 
-        List<TodoItem> TodoQuart()
-        {
-            return TodoItems;
-        }
 
         public List<TodoItem> AddItem(string title, DateTime deadline)
         {
@@ -48,15 +43,16 @@ namespace EisenhowerCore {
             return TodoItems;
         }
 
-        public string QuartToString()
+        // to override
+        public override string ToString()
         {
             //List<string> QuartStringList = new List<string>();
             string QuartString = "";
 
             for (int i = 0; i < TodoItems.Count; i++)
             {
-                TodoItem TdItem = TodoItems[i];
-                QuartString = QuartString + ($"{i + 1}. {TdItem.TdToString()} \n");
+                TodoItem todoItem = TodoItems[i];
+                QuartString = QuartString + ($"{i + 1}. {todoItem.ToString()} \n");
             }
             return QuartString;
         }

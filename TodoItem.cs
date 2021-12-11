@@ -1,6 +1,5 @@
 using System;
-using System.Collections.Generic;
-using System.Text;
+
 
 namespace EisenhowerCore {
 
@@ -37,7 +36,8 @@ namespace EisenhowerCore {
             return this.IsDone = false;
         }
 
-        public string TdToString()
+        // to override
+        public override string ToString()
         {
             String TdTitle = GetTitle();
             DateTime TdDeadline = GetDeadline();
