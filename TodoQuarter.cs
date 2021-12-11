@@ -4,7 +4,8 @@ using System.Text;
 
 namespace EisenhowerCore { 
 
-    public class TodoQuarter {
+    public class TodoQuarter
+    {
 
         public List<TodoItem> TodoItems { get; set; } = new List<TodoItem>();
 
@@ -47,15 +48,17 @@ namespace EisenhowerCore {
             return TodoItems;
         }
 
-        public List<string> QuartToString()
+        public string QuartToString()
         {
-            List<string> QuartStringList = new List<string>();
+            //List<string> QuartStringList = new List<string>();
+            string QuartString = "";
 
             for (int i = 0; i < TodoItems.Count; i++)
             {
-                QuartStringList.Add($"{i + 1}. {TodoItems[i]}");
+                TodoItem TdItem = TodoItems[i];
+                QuartString = QuartString + ($"{i + 1}. {TdItem.TdToString()} \n");
             }
-            return QuartStringList;
+            return QuartString;
         }
     }
 
