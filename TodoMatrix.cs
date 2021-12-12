@@ -22,6 +22,7 @@ namespace EisenhowerCore
             TodoQuarters[QuarterType.NotImportantNotUrgent] = new TodoQuarter();
         }
 
+
         public Dictionary<QuarterType, TodoQuarter> GetQuarters()
         {
             return TodoQuarters;
@@ -58,29 +59,10 @@ namespace EisenhowerCore
             }
         }
 
-        public void AddItemsFromFile(string filename)
+        internal void AddItem(string title, DateTime deadline, object isImportant)
         {
-            string[] lines = System.IO.File.ReadAllLines(filename);
-            foreach (string line in lines)
-            {
-                string[] item = line.Split('|');
-                string title = item[0];
-                string[] date = item[1].Split('-');
-                bool isImportant;
-                DateTime deadline = new DateTime(DateTime.Today.Year, Int32.Parse(date[1]), Int32.Parse(date[0]));
-                if (item[2] == " ")
-                {
-                    isImportant = false;
-                }
-                else
-                {
-                    isImportant = true;
-                }
-                this.AddItem(title, deadline, isImportant);
-            }
+            throw new NotImplementedException();
         }
-
-
 
 
         public void ArchiveItems()

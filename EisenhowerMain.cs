@@ -7,24 +7,10 @@ namespace EisenhowerCore
     {
         static void Main(string[] args)
         {
-            DateTime V = DateTime.Now;
-            var TodoQuart = new TodoQuarter();
-            var todoMatrix = new TodoMatrix();
-            //TodoQuart.AddItem("hehe", V);
-            //TodoQuart.AddItem("haha", V);
-            //TodoQuart.AddItem("hehe", V);
-            //TodoQuart.AddItem("haha", V);
-            //TodoQuart.GetItem(0).Mark();
-            todoMatrix.AddItem("hihi", V);
-            todoMatrix.AddItem("hihi", V);
-            todoMatrix.AddItem("hihi", V);
-            todoMatrix.AddItem("hihi", V);
-            //string y = TodoQuart.ToString();
-            string z = todoMatrix.ToString();
-            //console.write(y);
-            Console.Write(z);
 
-
+            Program program = new Program();
+            program.Main();
+            
 
         }
 
