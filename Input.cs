@@ -26,6 +26,16 @@ namespace EisenhowerCore
             
         }
 
+        public int ChooseTodoByIndex()
+        {
+            while (true)
+            {
+                string userInput = Console.ReadLine();
+                int index = Int16.Parse(userInput) -1 ;
+                return index;
+            }
+        }
+
         public string UserInputStartMenu()
         {
             while (true)

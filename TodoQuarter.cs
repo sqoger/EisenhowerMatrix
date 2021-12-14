@@ -15,10 +15,9 @@ namespace EisenhowerCore {
             return TodoItems;
         }
 
-        public List<TodoItem> RemoveItem(int index)
+        public void RemoveItem(int index)
         {
             TodoItems.RemoveAt(index);
-            return TodoItems;
         }
 
         public List<TodoItem> ArchiveItems()

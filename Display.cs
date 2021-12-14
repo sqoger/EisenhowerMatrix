@@ -51,8 +51,15 @@ Options:
 wrong input, try again
 ------------------------------";
 
+        public string ChooseTodo = "choose todo item by index: ";
+
 
         TodoMatrix todoMatrix = new TodoMatrix();
+
+        public void displayChooseTodo()
+        {
+            Console.WriteLine(ChooseTodo);
+        }
 
         public void displayQuarterInformation1()
         {
