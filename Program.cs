@@ -31,14 +31,20 @@ namespace EisenhowerCore
                     }
                     if (userInput == "5")
                     {
-                        //TODO ! VALIDATION, DEADLINE / ISIMPORTANT
                         Console.WriteLine("title of your todo: ");
                         string title = input.NewTodoTitle();
-                        //Console.WriteLine("deadline (DD/MM): ");
+                        Console.WriteLine("deadline (DD/MM/YYYY): ");
                         DateTime deadline = input.NewTodoDeadline();
-                        //Console.WriteLine("is it important? (y/n): ");
-                        //string YesOrNo = input.userInputYesOrNo
-                        todoMatrix.AddItem(title, deadline);
+                        Console.WriteLine("is it important? (y/n): ");
+                        string YesOrNo = input.userInputYesOrNo();
+                        if (YesOrNo == "y")
+                        {
+                            todoMatrix.AddItem(title, deadline, true);
+                        }
+                        else
+                        {
+                            todoMatrix.AddItem(title, deadline, false);
+                        }
                     }
                     else
                     {
@@ -78,12 +84,18 @@ namespace EisenhowerCore
                             {
                                 Console.WriteLine("title of your todo: ");
                                 string title = input.NewTodoTitle();
-                                //Console.WriteLine("deadline (DD/MM): ");
+                                Console.WriteLine("deadline (DD/MM/YYYY): ");
                                 DateTime deadline = input.NewTodoDeadline();
-                                //Console.WriteLine("is it important? (y/n): ");
-                                //string YesOrNo = input
-                                todoMatrix.AddItem(title, deadline);
-
+                                Console.WriteLine("is it important? (y/n): ");
+                                string YesOrNo = input.userInputYesOrNo();
+                                if (YesOrNo == "y")
+                                {
+                                    todoMatrix.AddItem(title, deadline, true);
+                                }
+                                else
+                                {
+                                    todoMatrix.AddItem(title, deadline, false);
+                                }
                             }
                         }
                         if (userInput == "3")
@@ -122,12 +134,18 @@ namespace EisenhowerCore
                             {
                                 Console.WriteLine("title of your todo: ");
                                 string title = input.NewTodoTitle();
-                                //Console.WriteLine("deadline (DD/MM): ");
+                                Console.WriteLine("deadline (DD/MM/YYYY): ");
                                 DateTime deadline = input.NewTodoDeadline();
-                                //Console.WriteLine("is it important? (y/n): ");
-                                //string YesOrNo = input
-                                todoMatrix.AddItem(title, deadline);
-
+                                Console.WriteLine("is it important? (y/n): ");
+                                string YesOrNo = input.userInputYesOrNo();
+                                if (YesOrNo == "y")
+                                {
+                                    todoMatrix.AddItem(title, deadline, true);
+                                }
+                                else
+                                {
+                                    todoMatrix.AddItem(title, deadline, false);
+                                }
                             }
                         }
                             if (userInput == "2")
@@ -163,17 +181,23 @@ namespace EisenhowerCore
                                     quarterImportantNotUrgent.RemoveItem(index);
                                 }
                                 if (userInputforQuarter == "1")
+                            {
+                                Console.WriteLine("title of your todo: ");
+                                string title = input.NewTodoTitle();
+                                Console.WriteLine("deadline (DD/MM/YYYY): ");
+                                DateTime deadline = input.NewTodoDeadline();
+                                Console.WriteLine("is it important? (y/n): ");
+                                string YesOrNo = input.userInputYesOrNo();
+                                if (YesOrNo == "y")
                                 {
-                                    Console.WriteLine("title of your todo: ");
-                                    string title = input.NewTodoTitle();
-                                    //Console.WriteLine("deadline (DD/MM): ");
-                                    DateTime deadline = input.NewTodoDeadline();
-                                    //Console.WriteLine("is it important? (y/n): ");
-                                    //string YesOrNo = input
-                                    todoMatrix.AddItem(title, deadline);
-
+                                    todoMatrix.AddItem(title, deadline, true);
+                                }
+                                else
+                                {
+                                    todoMatrix.AddItem(title, deadline, false);
                                 }
                             }
+                        }
                             if (userInput == "1")
                             {
                                 display.displayQuarterInformation1();
@@ -210,12 +234,18 @@ namespace EisenhowerCore
                                 {
                                     Console.WriteLine("title of your todo: ");
                                     string title = input.NewTodoTitle();
-                                    //Console.WriteLine("deadline (DD/MM): ");
+                                    Console.WriteLine("deadline (DD/MM/YYYY): ");
                                     DateTime deadline = input.NewTodoDeadline();
-                                    //Console.WriteLine("is it important? (y/n): ");
-                                    //string YesOrNo = input
-                                    todoMatrix.AddItem(title, deadline);
-
+                                    Console.WriteLine("is it important? (y/n): ");
+                                    string YesOrNo = input.userInputYesOrNo();
+                                    if (YesOrNo == "y")
+                                    {
+                                        todoMatrix.AddItem(title, deadline, true);
+                                    }
+                                    else
+                                    {
+                                        todoMatrix.AddItem(title, deadline, false);
+                                    }
                                 }
 
                             }

@@ -7,6 +7,7 @@ namespace EisenhowerCore
 {
     class Input
     {
+        TodoMatrix todoMatrix = new TodoMatrix();
         Display display = new Display();
         public readonly List<string> StartMenu = new List<string>() { "1", "2", "3", "4", "5", "6", "7" };
         public readonly List<string> QuarterMenu = new List<string>() { "1", "2", "3", "4", "5" };
@@ -71,23 +72,17 @@ namespace EisenhowerCore
 
         public DateTime NewTodoDeadline()
         {
-            DateTime deadline = DateTime.Now;
-            return deadline;
-            //while (true)
-            //{
-            //    string format = "dd/MM";
-            //    string input = Console.ReadLine();
-            //    DateTime dateTime;
-            //    if (DateTime.TryParseExact(input, format, CultureInfo.InvariantCulture, DateTimeStyles.None, out dateTime))
-            //    {
-            //        return dateTime;
-            //    }
-            //    display.DisplayWrongInputMessage();
-            //}
+            while (true)
+            {
+                string input = Console.ReadLine();
+                DateTime dateTime;
+                if (DateTime.TryParse(input, out dateTime))
+                {
+                    return dateTime;
+                }
+                display.DisplayWrongInputMessage();
+            }
 
         }
-
-        
-
     }
 }

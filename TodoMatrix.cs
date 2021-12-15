@@ -7,6 +7,7 @@ namespace EisenhowerCore
 
     public class TodoMatrix
     {
+        public bool IsImportant { get; set; }
         public enum QuarterType
         {
             ImportantUrgent, ImportantNotUrgent, NotImportantUrgent, NotImportantNotUrgent
@@ -33,9 +34,9 @@ namespace EisenhowerCore
             return TodoQuarters[status];
         }
 
-        public void AddItem(String title, DateTime deadline, bool isImportant = false)
+        public void AddItem(String title, DateTime deadline, bool IsImportant)
         {
-            if (isImportant == false)
+            if (IsImportant == false)
             {
                 if ((deadline - DateTime.Now).TotalDays > 3)
                 {
@@ -59,7 +60,7 @@ namespace EisenhowerCore
             }
         }
 
-        internal void AddItem(string title, DateTime deadline, object isImportant)
+        internal void AddItem(string title, DateTime deadline, object IsImportant)
         {
             throw new NotImplementedException();
         }
