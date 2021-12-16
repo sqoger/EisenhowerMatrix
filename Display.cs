@@ -54,7 +54,7 @@ wrong input, try again
         public string ChooseTodo = "choose todo item by index: ";
 
 
-        TodoMatrix todoMatrix = new TodoMatrix();
+        
 
         public void displayChooseTodo()
         {
@@ -85,7 +85,7 @@ wrong input, try again
         {
             Console.Clear();
         }
-        public void DisplayTodos()
+        public void DisplayTodos(TodoMatrix todoMatrix)
         {
             Console.WriteLine(todoMatrix.ToString());
         }

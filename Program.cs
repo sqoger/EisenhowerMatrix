@@ -9,14 +9,14 @@ namespace EisenhowerCore
         public TodoMatrix todoMatrix = new TodoMatrix();
         public Display display = new Display();
         public Input input = new Input();
-        public TodoQuarter todoQuarter = new TodoQuarter();
+        //public TodoQuarter todoQuarter = new TodoQuarter();
 
         public void Main()
         {
             while (true)
             {
                 display.ClearScreen();
-                display.DisplayTodos();
+                display.DisplayTodos(todoMatrix);
                 display.DisplayStartMenu();
                 string userInput = input.UserInputStartMenu();
                 if (userInput == "7")

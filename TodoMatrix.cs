@@ -60,12 +60,6 @@ namespace EisenhowerCore
             }
         }
 
-        internal void AddItem(string title, DateTime deadline, object IsImportant)
-        {
-            throw new NotImplementedException();
-        }
-
-
         public void ArchiveItems()
         {
             foreach (TodoQuarter quarter in TodoQuarters.Values)
@@ -81,19 +75,19 @@ namespace EisenhowerCore
             {
                 if (item.Key == QuarterType.ImportantUrgent)
                 {
-                    MatrixString += $"Important & Urgent: \n{item.Value.ToString()}";
+                    MatrixString += $"Important & Urgent: \n{item.Value}";
                 }
                 else if (item.Key == QuarterType.ImportantNotUrgent)
                 {
-                    MatrixString += $"Important & Not Urgent: \n{item.Value.ToString()}";
+                    MatrixString += $"Important & Not Urgent: \n{item.Value}";
                 }
                 else if (item.Key == QuarterType.NotImportantUrgent)
                 {
-                    MatrixString += $"Not Important & Urgent: \n{item.Value.ToString()}";
+                    MatrixString += $"Not Important & Urgent: \n{item.Value}";
                 }
                 else if (item.Key == QuarterType.NotImportantNotUrgent)
                 {
-                    MatrixString += $"Not Important & Not Urgent: \n{item.Value.ToString()}";
+                    MatrixString += $"Not Important & Not Urgent: \n{item.Value}";
                 }
 
             }
