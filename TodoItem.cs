@@ -1,7 +1,8 @@
 using System;
 
 
-namespace EisenhowerCore {
+namespace EisenhowerCore 
+{
 
     public class TodoItem
     {

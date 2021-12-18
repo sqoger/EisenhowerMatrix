@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EisenhowerMatrix;
+using System;
 
 
 namespace EisenhowerCore
@@ -8,9 +9,9 @@ namespace EisenhowerCore
         static void Main(string[] args)
         {
 
-            Program program = new Program();
-            program.Main();
-            
+            //Program program = new Program();
+            //program.Main();
+            //DemoTextFileStorage.TextFileStorage();
 
         }
 

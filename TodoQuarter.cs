@@ -49,7 +49,7 @@ namespace EisenhowerCore {
             string QuartString = "";
 
             for (int i = 0; i < TodoItems.Count; i++)
-            {
+            { 
                 TodoItem todoItem = TodoItems[i];
                 QuartString = QuartString + ($"{i + 1}. {todoItem.ToString()} \n");
             }

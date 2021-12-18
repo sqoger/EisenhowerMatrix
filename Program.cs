@@ -15,7 +15,7 @@ namespace EisenhowerCore
         {
             while (true)
             {
-                display.ClearScreen();
+                display.ClearScreen(); 
                 display.DisplayTodos();
                 display.DisplayStartMenu();
                 string userInput = input.UserInputStartMenu();
