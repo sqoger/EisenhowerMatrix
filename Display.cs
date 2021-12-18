@@ -15,7 +15,9 @@ namespace EisenhowerCore
 4. not urgent & not important items
 5. Add todo
 6. Archive marked todos
-7. Quit
+7. Load files from .csv
+8. Save files to .csv
+9. Quit
 ";
 
         public string UrgentImportant = @"

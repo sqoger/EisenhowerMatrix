@@ -19,6 +19,14 @@ namespace EisenhowerCore
                 display.DisplayTodos(todoMatrix);
                 display.DisplayStartMenu();
                 string userInput = input.UserInputStartMenu();
+                if (userInput == "9")
+                {
+                    System.Environment.Exit(1);
+                }
+                if (userInput == "8")
+                {
+                    System.Environment.Exit(1);
+                }
                 if (userInput == "7")
                 {
                     System.Environment.Exit(1);
