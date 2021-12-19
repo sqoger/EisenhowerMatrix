@@ -23,16 +23,16 @@ namespace EisenhowerCore
                 {
                     System.Environment.Exit(1);
                 }
-                if (userInput == "8")
-                {
-                    System.Environment.Exit(1);
-                }
-                if (userInput == "7")
-                {
-                    System.Environment.Exit(1);
-                }
                 else
                 {
+                    if (userInput == "8")
+                    {
+                        todoMatrix.SaveItems();
+                    }
+                    if (userInput == "7")
+                    {
+                        todoMatrix.LoadItems();
+                    }
                     if (userInput == "6")
                     {
                         todoMatrix.ArchiveItems();

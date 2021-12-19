@@ -9,7 +9,7 @@ namespace EisenhowerCore
     {
         TodoMatrix todoMatrix = new TodoMatrix();
         Display display = new Display();
-        public readonly List<string> StartMenu = new List<string>() { "1", "2", "3", "4", "5", "6", "7" };
+        public readonly List<string> StartMenu = new List<string>() { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
         public readonly List<string> QuarterMenu = new List<string>() { "1", "2", "3", "4", "5" };
 
         public string userInputYesOrNo()

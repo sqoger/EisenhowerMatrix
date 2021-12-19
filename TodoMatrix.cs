@@ -69,42 +69,46 @@ namespace EisenhowerCore
             }
         }
 
-        public static void SaveItems(List<TodoItem> items, string filePath)
+        public void SaveItems()
         {
+            bool isImportant = false;
             List<string> lines = new List<string>();
-
-            //add a header row
-            lines.Add("Item,Deadline,IsDone");
-            foreach (var item in items)
+            string filePath = @"C:\Users\stplu\Desktop\C# OOP\Eisenhower\EisenhowerMatrix\Todos.csv";
+            foreach (TodoQuarter quarter in TodoQuarters.Values)
             {
-                lines.Add($"{item.Title}, {item.Deadline}, {item.IsDone}");
+                if (quarter == TodoQuarters[QuarterType.ImportantUrgent] || quarter == TodoQuarters[QuarterType.ImportantNotUrgent])
+                {
+                    List<TodoItem> Todos = quarter.GetItems();
+                    foreach (var Todo in Todos)
+                    {
+                        lines.Add($"{Todo.Title}, {Todo.Deadline}, {isImportant = true}");
+                    }
+                }
+                else
+                {
+                    List<TodoItem> TodosNI = quarter.GetItems();
+                    foreach (var Todo in TodosNI)
+                    {
+                        lines.Add($"{Todo.Title}, {Todo.Deadline}, {isImportant = false}");
+                    }
+                }
             }
-
             System.IO.File.WriteAllLines(filePath, lines);
         }
 
-        public static List<TodoItem> LoadItems(string filePath)
+        public void LoadItems()
         {
-            List<TodoItem> output = new List<TodoItem>();
+            string filePath = @"C:\Users\stplu\Desktop\C# OOP\Eisenhower\EisenhowerMatrix\Todos.csv";
             var lines = System.IO.File.ReadAllLines(filePath).ToList();
-
-            // remove the header row
-            lines.RemoveAt(0);
 
             foreach (var line in lines)
             {
-                var vals = line.Split(',');
+                var vals = line.Split(", ");
                 string title = vals[0];
                 DateTime deadLine = Convert.ToDateTime(vals[1]);
-                bool isDone = Convert.ToBoolean(vals[2]);
-                TodoItem i = new TodoItem(title, deadLine);
-                i.IsDone = isDone;
-
-
-                output.Add(i);
-            }
-
-            return output;
+                bool isImportant = Convert.ToBoolean(vals[2]);
+                AddItem(title, deadLine, isImportant);
+            }            
         }
 
         public override string ToString()
